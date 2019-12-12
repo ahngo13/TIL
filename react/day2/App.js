@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+//브라우저 히스토리 API 동작을 확인하는 코드
 class App extends Component{
   componentDidMount(){
     window.onpopstate = function(event){

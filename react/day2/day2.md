@@ -69,7 +69,7 @@ npm start
 
 
 
-#### 브라우저 히드토리 API 동작을 확인하는 코드
+#### 브라우저 히스토리 API 동작을 확인하는 코드
 
 ~~~react
 import React, {Component} from 'react';
