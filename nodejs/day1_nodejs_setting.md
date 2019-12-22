@@ -6,21 +6,19 @@
 
 http://brackets.io/ 
 
- 
-
-![image-20191222154740425](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222154740425.png)
+![image-20191222154740425](image-20191222154740425.png)
 
 브라켓 초기 실행 화면
 
 
 
-![image-20191222154848583](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222154848583.png)
+![image-20191222154848583](image-20191222154848583.png)
 
 메뉴 보기 → 테마에 들어가면 테마와 글자크기, 글꼴 변경 가능
 
 
 
-![image-20191222155604879](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222155604879.png)
+![image-20191222155604879](image-20191222155604879.png)
 
 ~~~javascript
 console.log('안녕하세요~');
@@ -55,7 +53,7 @@ test1.html
 
 ### 파일 실행
 
-![image-20191222160434311](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222160434311.png)
+![image-20191222160434311](image-20191222160434311.png)
 
 - 오른쪽 상단의 번개모양 버튼
 - 파일 → 실시간 미리보기
@@ -64,13 +62,13 @@ test1.html
 
 ### 확장 프로그램 설치
 
-![image-20191222160732105](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222160732105.png)
+![image-20191222160732105](image-20191222160732105.png)
 
 파일 → 확장기능 관리자 → Custom Work, Brackets Icons 설치
 
 
 
-![image-20191222161438103](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222161438103.png)
+![image-20191222161438103](image-20191222161438103.png)
 
 - Custom Work : 각각의 파일을 열 때 탭으로 표시하는 등 여러 가지 기능 사용가능
 - Brackets Icons : 파일 앞에 아이콘 표시
@@ -81,4 +79,4 @@ test1.html
 
 https://nodejs.org/ko/
 
-![image-20191222161657280](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222161657280.png)
+![image-20191222161657280](image-20191222161657280.png)
