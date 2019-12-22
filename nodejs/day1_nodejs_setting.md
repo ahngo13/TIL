@@ -4,9 +4,9 @@
 
 어도비에서 제공하는 브라켓은 오픈 소스로 만들어진 텍스트 편집기
 
-http://brackets.io/
+http://brackets.io/ 
 
-
+ 
 
 ![image-20191222154740425](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222154740425.png)
 

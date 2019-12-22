@@ -10,7 +10,7 @@ console.log('안녕하세요.');
 
 
 
-### 자바스크립트 파일 실행
+### 자바스크립트 파일 실행  
 
 ![image-20191222163436284](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191222163436284.png)
 
