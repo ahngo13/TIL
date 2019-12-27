@@ -200,23 +200,23 @@ golang              1.9                 ef89ef5c42a9        17 months ago       
 
 #### #6 도커 컨테이너 실행
 
-root@server:~/docker#docker container run -p 9000:8080 example/echo:latest
+root@server:~/docker#**docker container run -p 9000:8080 example/echo:latest**
 
-example/echo:latestroot@server:~/docker#docker container run -p 9000:8080 -d  
+example/echo:latestroot@server:~/docker#**docker container run -p 9000:8080 -d**  
 
-example/echo:latestroot@server:~/docker#docker container run -p 9000:8080 -it 
+example/echo:latestroot@server:~/docker#**docker container run -p 9000:8080 -it** 
 
-example/echo:latestroot@server:~/docker#docker container run -p 9000:8080 -itd 
+example/echo:latestroot@server:~/docker#**docker container run -p 9000:8080 -itd** 
 
-example/echo:latestroot@server:~/docker#docker container run -p 9000:8080 -it 
+example/echo:latestroot@server:~/docker#**docker container run -p 9000:8080 -it** 
 
-example/echo:latest /bin/bashroot@server:~/docker#docker container run -p 9000:8080 -itd example/echo:latest /bin/bash
+example/echo:latest /bin/bashroot@server:~/docker#**docker container run -p 9000:8080 -itd example/echo:latest /bin/bash**
 
 
 
-root@server:~/docker# docker container run -p 9003:8080 -itd --name CONTAINER_NAME example/echo:latest /bin/bash
+root@server:~/docker# **docker container run -p 9003:8080 -itd --name CONTAINER_NAME example/echo:latest /bin/bash**
 
-root@server:~/docker# docker container run -p 8080 -itd example/echo:latest /bin/bash
+root@server:~/docker# **docker container run -p 8080 -itd example/echo:latest /bin/bash**
 
 
 
@@ -1076,7 +1076,7 @@ root@server:~/wblog# docker ps
 
 ### 도커 이미지 커밋하기
 
-> root@server:~/webserver# docker commit -m "add hello3.html" mywebserver ahngo13/mywebserverimage:1.0
+> root@server:~/webserver# **docker commit -m "add hello3.html" mywebserver** **ahngo13/mywebserverimage:1.0**
 >
 > sha256:fda7edddccba6b55b3242565d5c88399a24ae5c2f752e8998b8e852d020beec2
 >
