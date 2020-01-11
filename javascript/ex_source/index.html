@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<h3> + 연산자</h3>
+<script>
+	var num1=15, num2=4;
+	var str1= "Javascript", str2="Programming";
+	
+	document.write(str1+str2+'<br>'); //JavascriptProgramming
+	document.write(str1+num1+'<br>'); //Javascript15
+	document.write(123+num2+'<br>'); //127
+	document.write("123"+num2+'<br>'); //1234
+	
+	document.write("--------------------------------<br>");
+	
+	var x,y,temp;
+	x=30, y=70, temp="***";
+	if(x>y){temp=x; x=y; y=temp;} //블록을 전부 묶었으므로 묶어서 처리됨.
+	document.write("x="+x+",y="+y+"<br>"); //x=30, y=70
+
+	x=30, y=70, temp="***";
+	if(x>y)temp=x; x=y; y=temp; //if문에 포함되는 것은 temp=x만이므로 x=y와 y=temp만 처리됨.
+	document.write("x="+x+",y="+y+"<br>"); //x=70, y=***
+	
+	x=30, y=70, temp="***";
+	if(x>y){temp=x;} x=y; y=temp; //if문에 포함되는 것은 괄호에 묶인 temp=x만이므로 x=y와 y=temp만 처리됨.
+	document.write("x="+x+",y="+y+"<br>"); //x=70, y=***
+	
+	document.write("--------------------------------<br>");
+	
+	var str1="web programming";
+	var str2="공과대학 '컴퓨터공학' 전공";
+	var str3='HTML5 "웹"프로그래밍';
+	
+	document.write("str1의 크기 :");
+	document.write("str1.length"); //15
+	document.write("<br>");
+	document.write("str1의 네번째 문자(str1[4]):"+str1[4]); //p 말은 4번째라고 했지만 실질적으로는 5번째 문자임. 공백 포함
+	document.write("<br>");
+	document.write(str2 + "<br>");//공과대학 '컴퓨터공학' 전공
+	document.write(str3 + "<br>");//HTML5 "웹"프로그래밍
+	
+	document.write("--------------------------------<br>");
+	
+	
+</script>
+</body>
+</html>
