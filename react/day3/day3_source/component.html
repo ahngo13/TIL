@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>React</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+    class HelloWorld extends React.Component{
+        render(){
+            return <p>Hello, {this.props.greetTarget}!</p>
+        }
+    }
+
+    ReactDOM.render(
+        <div>
+            <HelloWorld greetTarget="Batman"/>
+            <HelloWorld greetTarget="Iron Man"/>
+            <HelloWorld greetTarget="Mega Man"/>
+            <HelloWorld greetTarget="X Man"/>
+            <HelloWorld greetTarget="Nicolas Cage"/>
+            <HelloWorld greetTarget="Catwoman"/>
+        </div>,
+        document.querySelector('#container')
+    );
+    </script>
+</body>
