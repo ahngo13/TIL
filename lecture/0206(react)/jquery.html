@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+      $(document).ready(function() {
+        $("#msg_btn").click(function() {
+          $("#msg").text("안녕! 햄릿슈!");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="msg_btn">메시지 출력</button>
+    <div id="msg"></div>
+  </body>
+</html>

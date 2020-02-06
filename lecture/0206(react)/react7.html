@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      class LightningCounter extends React.Component {
+        constructor(props) {
+          super(props);
+          console.log("constructor 호출됨");
+          this.state = {
+            //state로 하지 않으면 상태변수로 인식하지 않음
+            strikes: 0
+          };
+          // this.timerTick = this.timerTick.bind(this);
+        }
+        //클래스 안에 있지만 독립적임. bind를 해주었음.
+        /* timerTick() {
+          this.setState({
+            strikes: this.state.strikes + 1000
+          });
+        } */
+        timerTick = () => {
+          //화살표 함수로 바꾸면 bind하지 않아도 독립적으로 수행가능.
+          this.setState({
+            strikes: this.state.strikes + 1000
+          });
+        };
+        componentDidMount() {
+          //화면이 모두 구성된 이후에 실행
+          console.log("componentDidMount 호출됨");
+          setInterval(this.timerTick, 1000); //1초마다 timerTick 콜백 메서드를 실행
+        }
+        render() {
+          //반복적으로 호출되고 있는 곳
+          console.log("render 호출됨");
+          return <h1>리액트 못 따라갈 가능성{this.state.strikes}</h1>;
+        }
+      }
+      class LightningCounterDisplay extends React.Component {
+        render() {
+          const divStyle = {
+            width: 250,
+            textAlign: "center",
+            backgroundColor: "black",
+            padding: 40,
+            fontFamily: "sans-serif",
+            color: "#999",
+            borderRadius: 10
+          };
+          return (
+            <div style={divStyle}>
+              <LightningCounter />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <LightningCounterDisplay />
+        </div>,
+        document.querySelector("#container")
+      );
+    </script>
+  </body>
+</html>

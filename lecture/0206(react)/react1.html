@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #eee;
+      }
+      #container i {
+        font-size: 70px;
+        font-family: sans-serif;
+        color: #0080a8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      function formatDistance(distance) {
+        return distance + "km";
+      }
+
+      function getDistance(speed, time) {
+        const result = speed * time;
+        alert(formatDistance(result));
+      }
+
+      /*       const speed = 10;
+      const time = 5;
+      alert(speed * time); */
+      //   getDistance(10, 5);
+      /*       const speed1 = 85;
+      const time1 = 1.5;
+      alert(speed1 * time1); */
+      //   getDistance(85, 1.5);
+      /*       const speed2 = 12;
+      const time2 = 9;
+      alert(speed2 * time2); */
+      //   getDistance(12, 9);
+      /*       const speed3 = 42;
+      const time3 = 21;
+      alert(speed3 * time3); */
+      // getDistance(42, 21);
+
+      class HelloWorld extends React.Component {
+        //상속을 받았기 때문에 리액트 컴포넌트로 인식함. 상속이 없으면 자바스크립트 클래스
+        render() {
+          //오버라이딩 overrriding 재정의, 리액트 컴포넌트의 내용을 내가 바꾸겠습니다.
+          return (
+            <p>
+              <i>
+                {this.props.greeting} {this.props.name}
+              </i>
+            </p>
+          );
+        }
+      }
+
+      const destination = document.querySelector("#container");
+      ReactDOM.render(
+        <div>
+          <HelloWorld greeting="안녕?" name="햄릿슈" />
+          <HelloWorld greeting="안뇽?" name="욱마왕" />
+          <HelloWorld greeting="잘가" name="갓창유" />
+          <HelloWorld greeting="어디야?" name="초록피" />
+          <HelloWorld greeting="삼성가?" name="파란피" />
+          <HelloWorld greeting="난 사람?" name="빨간피" />
+        </div>,
+        destination
+      ); //리액트 컴포넌트 적용 HelloWorld
+    </script>
+  </body>
+</html>

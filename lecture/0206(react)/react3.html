@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+    <style>
+      /*       .letter {
+        padding: 10px;
+        margin: 10px;
+        background-color: #ffde00;
+        color: #333;
+        display: inline-block;
+        font-family: monospace;
+        font-size: 32px;
+        text-align: center;
+      } */
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      class Letter extends React.Component {
+        render() {
+          const letterStyle = {
+            padding: 10,
+            margin: 10,
+            backgroundColor: this.props.a, //여기에서는 {} 안함, 이 구역은 자바스크립트이기 때문
+            color: "#333",
+            display: "inline-block",
+            fontFamily: "monospace",
+            fontSize: 32,
+            textAlign: "center"
+          };
+          return <div style={letterStyle}>{this.props.children}</div>;
+        }
+      }
+      const container = document.querySelector("#container");
+      ReactDOM.render(
+        <div>
+          <Letter a="red">A</Letter>
+          <Letter a="yellow">E</Letter>
+          <Letter a="green">I</Letter>
+          <Letter a="blue">O</Letter>
+          <Letter a="gray">U</Letter>
+        </div>,
+        container
+      );
+    </script>
+  </body>
+</html>
