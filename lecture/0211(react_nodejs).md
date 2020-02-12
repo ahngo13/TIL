@@ -1,4 +1,4 @@
-### TodoList (서버 연결까지)
+### TodoList (node.js 서버 연동)
 
 index.html
 
@@ -128,11 +128,15 @@ app.listen(8080, () => {
 
 
 
+### TodoList (데이터베이스 연동)
 
+서버 작업환경에 mysql 모듈 설치
 
 ~~~
 reactHamletshu\test3\todolist_server> npm i mysql
 ~~~
+
+
 
 server.js
 
@@ -160,6 +164,8 @@ app.listen(8080, () => {
 });
 
 ~~~
+
+
 
 item.js
 
@@ -293,6 +299,8 @@ class TodoList extends Component{
 export default TodoList;
 ~~~
 
+
+
 TodoItem.jsx
 
 ~~~jsx
@@ -318,9 +326,293 @@ export default TodoItem;
 
 
 
+### 로그인, 로그아웃 기능까지
+
+server.js
+
+~~~js
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const memberRouter = require("./routes/memberRouter");
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/member", memberRouter);
+
+//app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({ ip: "111.222.333.444" });
+});
+
+app.listen(8080, () => {
+  console.log("8080 server ready");
+});
+
+~~~
 
 
-### ngrok 사용법
+
+memberRouter.js
+
+~~~js
+const express = require("express");
+const router = express.Router();
+
+router.post("/login", (req, res) => {
+  console.log(req.body);
+  res.json({ message: true });
+});
+
+router.get("/logout", (req, res) => {
+  res.json({ message: true });
+});
+
+module.exports = router;
+
+~~~
+
+
+
+MenuContainer.jsx
+
+- react-router-dom 모듈 설치 필요(라우터 처리)
+
+~~~jsx
+import React, {Component} from 'react';
+import MenuButton from './MenuButton';
+import Menu from './Menu';
+import Home from './Home';
+import Stuff from './Stuff';
+import Contact from './Contact';
+import {Route,NavLink,HashRouter} from 'react-router-dom';
+
+
+class MenuContainer extends Component{
+       state = {
+            visible:false
+        };
+
+    handleMouseDown=(e)=>{
+        this.toggleMenu();
+
+        console.log("clicked");
+        e.stopPropagation();
+    }
+
+    toggleMenu=()=>{
+        this.setState({
+            visible:!this.state.visible
+        });
+    }
+
+    render(){
+        return(
+            <div>
+                <MenuButton handleMouseDown={this.handleMouseDown}/>
+                <Menu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}></Menu>
+                <HashRouter>
+                <div>
+                    <h1>Simple SPA</h1>
+                    <ul className="header">
+                        <li><NavLink exact to='/'>Home</NavLink></li>
+                        <li><NavLink to='/stuff'>Stuff</NavLink></li>
+                        <li><NavLink to='/contact'>Contact</NavLink></li>
+                    </ul>
+                    <div className="content">
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/stuff" component={Stuff}/>
+                        <Route path="/contact" component={Contact}/>
+                    </div>
+                </div>
+                </HashRouter>
+            </div>
+        );
+    }
+}
+
+export default MenuContainer;
+~~~
+
+
+
+menu.jsx
+
+- jQuery 모듈 설치
+
+~~~jsx
+import React, {Component} from 'react';
+import "./css/Menu.css";
+import $ from 'jquery';
+
+class Menu extends Component{
+
+    state={
+        loginStyle:"inline-block",
+        logoutStyle:"none"
+    }
+
+    logout=()=>{
+        $.get('http://localhost:8080/member/logout',(returnData)=>{
+            if(returnData.message){
+                this.setState({
+                    loginStyle:"inline-block",
+                    logoutStyle:"none"
+                })
+            }
+        });
+    }
+
+    login=()=>{
+        const send_param = {
+            email : this.emailE.value,
+            pw : this.pwE.value
+        };
+
+        $.post('http://localhost:8080/member/login',send_param, (returnData)=>{
+            if(returnData.message){
+                this.setState({
+                    loginStyle:"none",
+                    logoutStyle:"inline-block"
+                });
+            }
+            
+            this.emailE.value='';
+            this.pwE.value='';
+            this.emailE.focus();
+        });
+    }
+
+    render(){
+        const loginStyle={
+            display:this.state.loginStyle
+        }
+        const logoutStyle={
+            display:this.state.logoutStyle
+        }
+
+        let visibility = "hide";
+
+        if(this.props.menuVisibility){
+            visibility = "show";
+        }
+
+        return(
+        <div id="flyoutMenu" onDrag={this.props.handleMouseDown} className={visibility}>
+            <div style={loginStyle}>
+                이메일 : <input ref={ref=>this.emailE=ref}/><br/>
+                비밀번호 : <input type="password" ref={ref=>this.pwE=ref}/><br/>
+                <button onClick={this.login}>로그인</button>
+                <button>회원가입</button>
+            </div>
+            <div style={logoutStyle}>
+                <button onClick={this.logout}>로그아웃</button>
+            </div>
+            <h2><a href="/">Home</a></h2>
+            <h2><a href="/">About</a></h2>
+            <h2><a href="/">Contact</a></h2>
+            <h2><a href="/">Search</a></h2>
+        </div>
+        );
+    }
+}
+
+export default Menu;
+~~~
+
+
+
+menubutton.jsx
+
+~~~jsx
+import React, {Component} from 'react';
+import './css/MenuButton.css';
+
+class MenuButton extends Component{
+    render(){
+        return(<button id="roundButton" onMouseDown={this.props.handleMouseDown}></button>);
+    }
+}
+
+export default MenuButton;
+~~~
+
+
+
+Home.jsx
+
+~~~jsx
+import React, {Component} from 'react';
+
+class Home extends Component{
+    render(){
+        return(
+            <div>
+                <h2>HOME</h2>
+                <p>home</p>
+            </div>
+        );
+    }
+}
+
+export default Home;
+~~~
+
+
+
+Stuff.jsx
+
+~~~jsx
+import React, {Component} from 'react';
+
+class Stuff extends Component{
+    render(){
+        return(
+            <div>
+                <h2>Stuff</h2>
+                <p>Stuff</p>
+            </div>
+        );
+    }
+}
+
+export default Stuff;
+~~~
+
+
+
+contact.jsx
+
+~~~jsx
+import React, {Component} from 'react';
+
+class Contact extends Component{
+    render(){
+        return(
+            <div>
+                <h2>Contact</h2>
+                <p>회원가입</p>
+                이름 : <input /> <br/>
+                이메일 : <input /> <br/>
+                비밀번호 : <input /> <br/>
+                comments : <input /> <br/>
+                <input type="button" value="가입하기"/>
+            </div>
+        );
+    }
+}
+
+export default Contact;
+~~~
+
+
+
+### ngrok
+
+- 모바일 기기에서 접속가능하게 URL을 만들어서 제공해 줌(모바일 테스트할 때 유용해보임)
 
 - https://dashboard.ngrok.com/get-started 접속 후 설치
 
