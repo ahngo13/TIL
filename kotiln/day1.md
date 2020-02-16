@@ -4,7 +4,7 @@
 
 ~~~kotlin
 var a: int // var 변수명: 자료형 = 값
-val b: int = 20 // val 상수명: 자료형 = 값, java와 비교할 때 fanal
+val b: int = 20 // val 상수명: 자료형 = 값, java와 비교할 때 final
 ~~~
 
 
