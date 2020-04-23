@@ -8,5 +8,3 @@ const [count, setCount] = useState(0);
 ~~~
 
 - useState와 this.state는 다르다(이전 state와 새로운 state를 합치지 않는다)
-- 
-
