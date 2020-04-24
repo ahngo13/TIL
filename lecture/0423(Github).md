@@ -6,6 +6,8 @@
   - Fork & PR
   - Shared Repository with Branching(Branch)
 - 배포도구
+  - Github Pages
+  - Heroku
 
 
 
@@ -77,7 +79,6 @@ git credential reject
    - 현재 브랜치를 조회
 2. git branch [브랜치명]
    - 브랜치 생성
-
 3. git checkout [브랜치명]
    - 브랜치 이동
 4. git merge [(합칠)브랜치명]
@@ -86,6 +87,10 @@ git credential reject
 5. git branch -d [(삭제할)브랜치명] / `git branch -D [브랜치명]
    - 이미 병합된 브랜치를 삭제할 경우(-d): soft deletion
    - 병합되지 않은 브랜치를 삭제할 경우(-D): hard deletion
+6. git checkout -b gh-pages 
+   - 브랜치로 이동하면서 생성
+7. git log --oneline --graph
+   - 그래프도 볼 수 있음
 
 #### (5) Merge 시나리오
 
@@ -108,3 +113,86 @@ git credential reject
 
 ### 3.배포 도구
 
+- github pages
+- Heroku
+
+
+
+#### Platform as a Service
+
+#### PaaS
+
+#### Infrastructure as a Service
+
+#### IaaS
+
+
+
+https://www.netlify.com/
+
+https://www.gatsbyjs.org/
+
+https://pages.github.com/
+
+https://cantunsee.space
+
+https://kr.godaddy.com/
+
+https://mlab.com/
+
+
+
+~~~javascript
+const express = require("express");
+const _ = require("lodash");
+
+const app = express();
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "public")));
+
+let lotto = [];
+
+app.get("/", (req, res) => {
+  res.json({});
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("server is running!");
+});
+
+app.get("/lotto", (req, res) => {
+  res.send(_.sortBy(_.sampleSize(_.range(1, 46), 6)));
+});
+
+/* app.get("/lotto", (req, res) => {
+  let i = 0;
+  while (i < 6) {
+    let n = Math.floor(Math.random() * 45) + 1;
+    if (!sameNum(n)) {
+      lotto.push(n);
+      i++;
+    }
+  }
+
+  res.json({ result: lotto });
+}); */
+
+/* function sameNum(n) {
+  for (var i = 0; i < lotto.length; i++) {
+    if (n === lotto[i]) {
+      return true;
+    }
+  }
+  return false;
+} */
+
+~~~
+
+
+
+#### github visualize
+
+- octotree
+
+- github desktop
