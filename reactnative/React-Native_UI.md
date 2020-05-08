@@ -1,4 +1,4 @@
-# React-Native
+# React-Native UI
 
 리액트 네이티브에서 스타일은 웹의 CSS와 일치하는데 HTML태그와 CSS를 사용할 수는 없다.
 
@@ -179,3 +179,80 @@ return (
 - ActiveIndicator : 로딩시 로딩 인디케이터를 제공하는 컴포넌트
 
 - Modal : 모달창을 구현할 때 사용되는 컴포넌트
+
+- 기타 컴포넌트 : https://facebook.github.io/react-native/ 
+
+
+
+### Props
+
+- numberOfLines : 말줄임 처리(라인 수를 정할 수 있음)
+- elliipsizeMode : 말줄임 위치 설정("head", "middle", "tail", "clip" 4가지 값으로 설정)
+
+~~~react
+render() {
+    return (
+      <SafeAreaView style={styles.wrap}>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="head">
+          ellipsizeMode is "head" ellipsizeMode is "head" ellipsizeMode is "head" ellipsizeMode is "head" ellipsizeMode is "head" ellipsizeMode is "head"
+        </Text>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="middle">
+          ellipsizeMode is "middle" ellipsizeMode is "middle" ellipsizeMode is "middle" ellipsizeMode is "middle" ellipsizeMode is "middle" 
+        </Text>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="tail">
+          ellipsizeMode is "tail" ellipsizeMode is "tail" ellipsizeMode is "tail" ellipsizeMode is "tail" ellipsizeMode is "tail" 
+        </Text>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="clip">
+          ellipsizeMode is "clip" ellipsizeMode is "clip" ellipsizeMode is "clip" ellipsizeMode is "clip" ellipsizeMode is "clip" 
+        </Text>
+      </SafeAreaView>
+    );
+  }
+~~~
+
+- contentContainerStyle : 컨텐츠 내용이 부족하더라도 ScrollView 영역만큼 영역을 확보해야 할 경우 사용
+
+~~~react
+ render() {
+    return (
+      <SafeAreaView style={styles.wrap}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Header</Text>
+        </View>
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <View style={styles.empty}>
+            <Text>contentContainer를 설정하면 영역이 확보됩니다.</Text>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+~~~
+
+- hitSlop : 주변 요소에 영향 주지 않고 터치영역 확장할 경우 사용(hitSlop은 object내에 `top`, `right`, `bottom`, `left` 값을 통해 조정)
+
+~~~react
+render() {
+    return (
+      <SafeAreaView style={styles.wrap}>
+        <TouchableOpacity style={styles.button}>
+          <Text>버튼</Text>
+        </TouchableOpacity>
+        <TouchableOpacity hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }} style={styles.button}>
+          <Text>버튼</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
+~~~
+
+### 오픈 소스 및 디버깅 툴
+
+- **react-native-debugger** https://github.com/jhen0409/react-native-debugger
+  - UI 디버깅을 개발자 도구와 비슷하게 사용 가능
+- **react-native-extended-stylesheet** https://github.com/vitalets/react-native-extended-stylesheet
+  - 스타일에 글로벌 변수 사용 가능, nth-child 등 확장 스타일 사용 가능
+- **react-native-iphone-x-helper** https://github.com/ptelad/react-native-iphone-x-helper
+  - iPhone의 노치 영역과 관련된 메소드 제공
+- **react-native-safe-area-view** https://github.com/react-native-community/react-native-safe-area-view
+  - SafeAreaView의 padding을 부분적으로 설정 가능
