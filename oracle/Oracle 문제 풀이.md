@@ -253,7 +253,8 @@ FROM EMP E
 31.사원들은 입사일을 기준으로 3개월이 지난 후 첫 월요일에 정직원이 된다. 정직원이 되는 날짜를 YYYY-MM-DD 형식으로 출력후 추가수당이 없는 사원의 추가수당은 N/A 출력
 
 ```sql
-
+SELECT TO_CHAR(NEXT_DAY(ADD_MONTHS(HIREDATE,3),'월요일'),'YYYY-MM-DD') "정직원 날짜", DECODE(NVL(COMM,0), 0, 'N/A', COMM) 추가수당
+FROM EMP
 ```
 
 32.평균 급여가 가장 높은 부서와 낮은 부서의 번호를 출력하시오
